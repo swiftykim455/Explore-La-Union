@@ -1,0 +1,1960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explore La Union | Group 1</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap');
+
+:root{
+  --dark:#06333b;
+  --teal:#087f8c;
+  --orange:#e8894c;
+  --yellow:#ffd18a;
+  --cream:#fffaf2;
+  --white:#fff;
+  --gray:#68777c;
+  --light:#eef7f6;
+  --shadow:0 15px 45px rgba(6,51,59,.10);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"DM Sans",sans-serif;color:var(--dark);background:var(--cream);line-height:1.7}
+a{text-decoration:none;color:inherit}
+.container{width:90%;max-width:1150px;margin:auto}
+section{scroll-margin-top:80px}
+
+/* NAV */
+.navbar{
+  position:fixed;top:0;left:0;width:100%;height:75px;z-index:1000;
+  display:flex;align-items:center;justify-content:space-between;padding:0 5%;
+  background:rgba(255,250,242,.96);backdrop-filter:blur(15px);
+  box-shadow:0 3px 20px rgba(0,0,0,.06)
+}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15rem}
+.logo span{background:var(--teal);color:#fff;padding:6px 9px;border-radius:8px}
+nav{display:flex;gap:22px}
+nav a{font-size:.88rem;font-weight:700;color:#52666b;transition:.3s}
+nav a:hover{color:var(--teal)}
+.menu-btn{display:none;background:none;border:0;font-size:28px;cursor:pointer}
+
+/* HERO */
+.hero{
+  min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;
+  text-align:center;color:#fff;
+  background:linear-gradient(120deg,rgba(3,40,49,.84),rgba(3,80,87,.38)),
+  url("https://images.unsplash.com/photo-=502680390469-be75c86b636f?auto=format&fit=crop&w=2000&q=90") center/cover;
+}
+.hero-content{width:90%;max-width:850px;animation:fadeUp 1s ease}
+.eyebrow{font-size:.75rem;letter-spacing:.18em;font-weight:800}
+.orange{color:var(--orange)}
+.hero h1{font-family:"Playfair Display",serif;font-size:clamp(3.5rem,8vw,7rem);line-height:1;margin:15px 0 25px}
+.hero h1 span{color:var(--yellow)}
+.hero-description{max-width:720px;margin:auto;font-size:1.1rem}
+.hero-buttons{margin-top:30px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 25px;border-radius:50px;background:var(--orange);color:#fff;border:0;font-weight:800;cursor:pointer;transition:.3s}
+.btn:hover{transform:translateY(-3px)}
+.btn-outline{background:transparent;border:1px solid #fff}
+.scroll{position:absolute;bottom:25px;font-size:.8rem}
+
+/* GENERAL */
+.section{padding:100px 0}
+.light{background:var(--light)}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-family:"Playfair Display",serif;font-size:clamp(2.2rem,5vw,3.5rem);line-height:1.2;margin:10px 0}
+
+/* INTRO */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.intro-image{
+  height:450px;border-radius:30px;
+  background:url("https://www.willflyforfood.net/wp-content/uploads/2018/06/la-union-travel-guide-san-juan-1200x800.jpg") center/cover;
+  box-shadow:var(--shadow)
+}
+.split h2{font-family:"Playfair Display",serif;font-size:3rem;line-height:1.2;margin:15px 0}
+.split p{color:var(--gray);margin-bottom:15px}
+.text-link{display:inline-block;margin-top:15px;color:var(--teal);font-weight:800}
+
+/* STATS */
+.stats{background:var(--dark);color:#fff;padding:55px 0}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);text-align:center}
+.stats strong{display:block;font-family:"Playfair Display",serif;color:var(--yellow);font-size:3rem}
+.stats span{color:#c4d5d7}
+
+/* FEATURES */
+.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.feature-card{
+  background:#fff;
+  padding:30px;
+  border-radius:22px;
+  box-shadow:0 10px 30px rgba(0,0,0,.06);
+  transition:.3s;
+  border:none;
+  width:100%;
+  text-align:left;
+  font:inherit;
+  color:inherit;
+  cursor:pointer;
+  position:relative;
+}
+.feature-card:hover{transform:translateY(-10px) scale(1.02);box-shadow:var(--shadow)}
+.feature-icon{font-size:2.5rem;margin-bottom:15px}
+.feature-card p{color:var(--gray)}
+.feature-card::after{content:"→";position:absolute;right:25px;bottom:22px;font-size:1.3rem;color:var(--teal);transition:.3s}
+.feature-card:hover::after{transform:translateX(7px)}
+.feature-click{display:inline-block;margin-top:15px;color:var(--teal);font-size:.85rem;font-weight:800}
+.feature-card:focus-visible,.guide-card:focus-visible{outline:3px solid rgba(232,137,76,.45);outline-offset:4px}
+
+/* DESTINATIONS */
+.destination-card{
+  display:grid;grid-template-columns:42% 58%;margin-bottom:35px;overflow:hidden;
+  background:#fff;border-radius:25px;box-shadow:var(--shadow)
+}
+.destination-image{min-height:430px;position:relative;background-size:cover;background-position:center}
+.destination-image span{position:absolute;top:20px;left:20px;background:rgba(6,51,59,.9);color:#fff;padding:8px 12px;border-radius:10px;font-weight:800}
+.sanjuan{background-image:url("https://flyingketchup.ph/wp-content/uploads/2020/11/photo_2020-11-23_21-16-57.jpg")}
+.macho{background-image:url("https://www.touristsecrets.com/wp-content/uploads/portal_files/styles/1280x840/public/touristsecrets_site_posts/inline-images/2021-02/21b2e8d5ee3dee44c3fd89f7bcec2032.jpeg")}
+.tangadan{background-image:url("https://thequeensescape.com/wp-content/uploads/2023/03/Tangadan-Falls-La-Union-5.jpg")}
+.bahay{background-image:url("https://iwentanyways.com/wp-content/uploads/2023/02/IMG_20230202_001358-scaled.jpg")}
+.poro{background-image:url("https://3.bp.blogspot.com/-PAMWsEcuP5c/VEywM8ypRkI/AAAAAAAACCc/y7qHgJE3lII/s1600/P1250517.JPG")}
+.destination-content{padding:40px}
+.location{color:var(--orange);font-weight:800;font-size:.85rem}
+.destination-content h3{font-family:"Playfair Display",serif;font-size:2.4rem;margin:5px 0 15px}
+.destination-content p{color:var(--gray)}
+.destination-content h4{margin-top:20px}
+.destination-content ul{margin-left:20px;color:var(--gray)}
+.tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+.tags span{padding:5px 10px;border-radius:50px;background:#eaf6f5;color:var(--teal);font-size:.78rem;font-weight:700}
+.best-time{margin-top:20px}
+
+/* GUIDE */
+.guide-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.guide-card{
+  background:#fff;
+  padding:30px;
+  border-radius:22px;
+  box-shadow:0 10px 30px rgba(0,0,0,.06);
+  transition:.3s;
+  border:none;
+  width:100%;
+  text-align:left;
+  font:inherit;
+  color:inherit;
+  cursor:pointer;
+  position:relative;
+}
+.guide-card .icon{font-size:2.5rem}
+.guide-card h3{margin:10px 0}
+.guide-card p{color:var(--gray)}
+.guide-card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 18px 40px rgba(6,51,59,.15)}
+.guide-card::after{content:"→";position:absolute;right:25px;bottom:22px;font-size:1.3rem;color:var(--teal);transition:.3s}
+.guide-card:hover::after{transform:translateX(7px)}
+.click-more{display:inline-block;margin-top:15px;color:var(--teal);font-size:.85rem;font-weight:800}
+
+/* TRAVEL GUIDE MODAL */
+.guide-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(3,35,41,.72);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:2000;
+  backdrop-filter:blur(6px);
+}
+.guide-modal.show{display:flex}
+.guide-modal-box{
+  background:var(--cream);
+  width:100%;
+  max-width:600px;
+  padding:40px;
+  border-radius:25px;
+  box-shadow:0 25px 70px rgba(0,0,0,.25);
+  position:relative;
+  animation:modalShow .3s ease;
+}
+.guide-modal-image{
+  width:100%;
+  height:230px;
+  object-fit:cover;
+  border-radius:18px;
+  margin-bottom:18px;
+  display:block;
+}
+.guide-modal-icon{font-size:3.5rem;margin-bottom:10px}
+.guide-modal-box h2{font-family:"Playfair Display",serif;font-size:2.5rem;color:var(--dark);margin-bottom:15px}
+.guide-modal-box p{color:var(--gray);margin-bottom:20px}
+.guide-modal-box ul{margin-left:20px;color:var(--gray)}
+.guide-modal-box li{margin-bottom:8px}
+.close-guide{
+  position:absolute;
+  top:15px;
+  right:20px;
+  border:none;
+  background:none;
+  font-size:30px;
+  cursor:pointer;
+  color:var(--dark);
+  line-height:1;
+}
+.close-guide:hover{color:var(--orange)}
+@keyframes modalShow{from{opacity:0;transform:translateY(25px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+/* ELEGANT SAMPLE ITINERARY */
+.timeline{
+  position:relative;
+  width:min(100%, 1040px);
+  margin:20px auto 0;
+  padding:12px 0 18px;
+  display:grid;
+  gap:28px;
+}
+
+.timeline::before{
+  content:"";
+  position:absolute;
+  top:4px;
+  bottom:4px;
+  left:50%;
+  width:2px;
+  background:linear-gradient(180deg,rgba(232,137,76,.12),var(--orange),rgba(232,137,76,.12));
+  transform:translateX(-50%);
+}
+
+.timeline-item{
+  position:relative;
+  width:calc(50% - 38px);
+  padding:30px 32px;
+  background:linear-gradient(145deg,#ffffff 0%,#fffdf9 100%);
+  border:1px solid rgba(6,51,59,.07);
+  border-radius:26px;
+  box-shadow:0 14px 38px rgba(6,51,59,.08);
+  overflow:visible;
+  transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;
+}
+
+.timeline-item:nth-child(odd){margin-right:auto}
+.timeline-item:nth-child(even){margin-left:auto}
+
+.timeline-item::before{
+  content:"";
+  position:absolute;
+  top:36px;
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  background:var(--cream);
+  border:4px solid var(--orange);
+  box-shadow:0 0 0 6px rgba(232,137,76,.10);
+  z-index:3;
+}
+
+.timeline-item:nth-child(odd)::before{right:-47px}
+.timeline-item:nth-child(even)::before{left:-47px}
+
+.timeline-item::after{
+  content:"";
+  position:absolute;
+  top:39px;
+  width:27px;
+  height:1px;
+  background:rgba(232,137,76,.40);
+}
+
+.timeline-item:nth-child(odd)::after{right:-27px}
+.timeline-item:nth-child(even)::after{left:-27px}
+
+.timeline-item:hover{
+  transform:translateY(-7px);
+  border-color:rgba(232,137,76,.28);
+  box-shadow:0 22px 48px rgba(6,51,59,.13);
+}
+
+.timeline-item span{
+  display:inline-flex;
+  align-items:center;
+  padding:6px 11px;
+  margin-bottom:12px;
+  border-radius:50px;
+  background:#fff4e9;
+  color:var(--orange);
+  font-weight:800;
+  letter-spacing:.16em;
+  font-size:.68rem;
+}
+
+.timeline-item h3{
+  margin:0 0 10px;
+  font-family:"Playfair Display",serif;
+  font-size:1.55rem;
+  line-height:1.2;
+  color:var(--dark);
+}
+
+.timeline-item h3::after{
+  content:"";
+  display:block;
+  width:44px;
+  height:2px;
+  margin-top:12px;
+  border-radius:10px;
+  background:linear-gradient(90deg,var(--orange),var(--yellow));
+}
+
+.timeline-item p{
+  color:var(--gray);
+  margin:0;
+  font-size:.96rem;
+  line-height:1.75;
+}
+
+/* CLICKABLE ITINERARY CARDS */
+.timeline-item{
+  border:none;
+  text-align:left;
+  font:inherit;
+  cursor:pointer;
+}
+.timeline-item:focus-visible{
+  outline:3px solid rgba(8,127,140,.35);
+  outline-offset:5px;
+}
+.timeline-item .itinerary-arrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:18px;
+  color:var(--teal);
+  font-size:.84rem;
+  font-weight:800;
+  letter-spacing:.02em;
+  transition:gap .25s ease;
+}
+.timeline-item:hover .itinerary-arrow{gap:13px}
+.itinerary-modal{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(3,35,41,.72);
+  backdrop-filter:blur(7px);
+  z-index:2100;
+}
+.itinerary-modal.show{display:flex}
+.itinerary-modal-box{
+  width:min(100%,640px);
+  max-height:90vh;
+  overflow:auto;
+  padding:42px;
+  border-radius:30px;
+  background:linear-gradient(145deg,#fffdf9,#ffffff);
+  border:1px solid rgba(232,137,76,.18);
+  box-shadow:0 30px 90px rgba(0,0,0,.25);
+  position:relative;
+  animation:itineraryShow .3s ease;
+}
+.itinerary-day{
+  display:inline-flex;
+  padding:7px 12px;
+  border-radius:999px;
+  background:#fff4e9;
+  color:var(--orange);
+  font-size:.7rem;
+  font-weight:800;
+  letter-spacing:.15em;
+}
+.itinerary-modal-box h2{
+  margin:14px 0 10px;
+  font-family:"Playfair Display",serif;
+  font-size:2.5rem;
+  line-height:1.15;
+  color:var(--dark);
+}
+.itinerary-modal-box .modal-lead{
+  color:var(--gray);
+  font-size:1rem;
+  line-height:1.8;
+  margin-bottom:22px;
+}
+.itinerary-details{
+  display:grid;
+  gap:12px;
+  margin-top:10px;
+}
+.itinerary-detail{
+  display:flex;
+  gap:12px;
+  padding:14px 16px;
+  border-radius:16px;
+  background:#f7fbfa;
+  color:var(--dark);
+}
+.itinerary-detail strong{min-width:92px;color:var(--teal)}
+.close-itinerary{
+  position:absolute;
+  top:16px;
+  right:20px;
+  width:40px;
+  height:40px;
+  border:none;
+  border-radius:50%;
+  background:#eef7f6;
+  color:var(--dark);
+  font-size:25px;
+  cursor:pointer;
+}
+.close-itinerary:hover{background:#fff0e5;color:var(--orange)}
+@keyframes itineraryShow{
+  from{opacity:0;transform:translateY(25px) scale(.96)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+.budget-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+  align-items:stretch;
+}
+.budget-card{
+  position:relative;
+  background:linear-gradient(145deg,#ffffff 0%,#fbfffe 100%);
+  padding:32px;
+  min-height:320px;
+  border-radius:28px;
+  border:1px solid rgba(8,127,140,.08);
+  box-shadow:0 16px 45px rgba(6,51,59,.08);
+  overflow:hidden;
+  transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+.budget-card::before{
+  content:"";
+  position:absolute;
+  top:0;left:0;right:0;
+  height:5px;
+  background:linear-gradient(90deg,var(--teal),var(--orange));
+}
+.budget-card::after{
+  content:"";
+  position:absolute;
+  width:150px;height:150px;
+  right:-70px;top:-70px;
+  border-radius:50%;
+  background:rgba(255,209,138,.18);
+}
+.budget-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 24px 55px rgba(6,51,59,.14);
+  border-color:rgba(8,127,140,.18);
+}
+.budget-icon{
+  width:54px;height:54px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:16px;
+  background:#eef7f6;
+  font-size:1.7rem;
+  margin-bottom:22px;
+  position:relative;
+  z-index:1;
+}
+.budget-card h3{
+  font-size:1.15rem;
+  margin-bottom:6px;
+  position:relative;
+  z-index:1;
+}
+.budget-card strong{
+  display:block;
+  color:var(--teal);
+  font-family:"Playfair Display",serif;
+  font-size:2.15rem;
+  line-height:1.15;
+  margin:12px 0 16px;
+  position:relative;
+  z-index:1;
+}
+.budget-card p{
+  color:var(--gray);
+  margin-bottom:22px;
+  position:relative;
+  z-index:1;
+}
+.budget-meta{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding-top:16px;
+  border-top:1px solid #e5eeee;
+  color:#50696e;
+  font-size:.82rem;
+  font-weight:700;
+  position:relative;
+  z-index:1;
+}
+.budget-card.featured{
+  transform:translateY(-8px);
+  border:2px solid var(--orange);
+  box-shadow:0 20px 55px rgba(232,137,76,.16);
+}
+.budget-card.featured:hover{transform:translateY(-14px)}
+.budget-badge{
+  position:absolute;
+  top:18px;
+  right:18px;
+  padding:7px 11px;
+  border-radius:50px;
+  background:#fff1e7;
+  color:var(--orange);
+  font-size:.7rem;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  z-index:2;
+}
+
+
+/* CLICKABLE BUDGET CARDS */
+.budget-card[role="button"]{cursor:pointer}
+.budget-card[role="button"]:focus-visible{
+  outline:3px solid rgba(232,137,76,.55);
+  outline-offset:4px;
+}
+.budget-card[role="button"] .budget-meta::after{
+  content:"Click for details →";
+  margin-left:auto;
+  color:var(--teal);
+}
+
+.budget-modal{
+  position:fixed;
+  inset:0;
+  z-index:2200;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(3,35,41,.72);
+  backdrop-filter:blur(7px);
+}
+.budget-modal.show{display:flex}
+.budget-modal-box{
+  width:100%;
+  max-width:620px;
+  background:linear-gradient(145deg,#fffdf8 0%,#ffffff 100%);
+  border:1px solid rgba(8,127,140,.10);
+  border-radius:30px;
+  padding:38px;
+  box-shadow:0 30px 90px rgba(0,0,0,.28);
+  position:relative;
+  animation:budgetModalShow .3s ease;
+}
+.budget-modal-box::before{
+  content:"";
+  position:absolute;
+  top:0;left:0;right:0;
+  height:5px;
+  border-radius:30px 30px 0 0;
+  background:linear-gradient(90deg,var(--teal),var(--orange));
+}
+.budget-modal-icon{
+  width:64px;height:64px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:18px;
+  background:#eef7f6;
+  font-size:2rem;
+  margin-bottom:18px;
+}
+.budget-modal-box h2{
+  font-family:"Playfair Display",serif;
+  font-size:2.5rem;
+  line-height:1.15;
+  margin-bottom:8px;
+  color:var(--dark);
+}
+.budget-modal-price{
+  font-family:"Playfair Display",serif;
+  color:var(--teal);
+  font-size:2rem;
+  font-weight:800;
+  margin-bottom:16px;
+}
+.budget-modal-box p{color:var(--gray);margin-bottom:18px}
+.budget-modal-list{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.budget-modal-list li{
+  background:#f3faf9;
+  border:1px solid #e0efee;
+  border-radius:13px;
+  padding:11px 14px;
+  color:#4f666a;
+}
+.close-budget{
+  position:absolute;
+  top:14px;right:18px;
+  width:40px;height:40px;
+  border:0;
+  border-radius:50%;
+  background:#fff3ea;
+  color:var(--dark);
+  font-size:26px;
+  cursor:pointer;
+  transition:.25s;
+}
+.close-budget:hover{background:#fff0e5;color:var(--orange);transform:rotate(90deg)}
+@keyframes budgetModalShow{
+  from{opacity:0;transform:translateY(22px) scale(.96)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+/* CULTURE */
+.culture-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:25px}
+.culture-card{padding:35px;background:#fff;border-radius:22px;box-shadow:var(--shadow)}
+.big-icon{font-size:3rem;margin-bottom:15px}
+.culture-card h2{font-family:"Playfair Display",serif;margin-bottom:10px}
+.culture-card p{color:var(--gray)}
+.food-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.food-card{background:#fff;padding:30px;border-radius:20px;text-align:center;box-shadow:0 8px 25px rgba(0,0,0,.06)}
+.food-icon{font-size:2.5rem;margin-bottom:10px}
+.food-card p{color:var(--gray)}
+
+/* TIPS */
+.tips-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tip-card{background:#fff;padding:30px;border-radius:22px;box-shadow:0 10px 30px rgba(0,0,0,.06)}
+.tip-icon{font-size:2.5rem;margin-bottom:15px}
+.tip-card h2{font-family:"Playfair Display",serif;margin-bottom:10px}
+.tip-card p{color:var(--gray)}
+.responsible{padding:80px 20px;background:var(--teal);color:#fff;text-align:center}
+.responsible h2{font-family:"Playfair Display",serif;font-size:3rem}
+.responsible p{max-width:700px;margin:15px auto}
+
+/* CONTACT */
+.contact-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px}
+.contact-info h2{font-family:"Playfair Display",serif;font-size:3rem;margin:10px 0}
+.contact-info>p{color:var(--gray)}
+.contact-details{margin-top:25px;display:grid;gap:10px}
+.contact-form{background:#fff;padding:35px;border-radius:25px;box-shadow:var(--shadow);display:grid;gap:20px}
+.contact-form label{font-weight:700}
+.contact-form input,.contact-form select,.contact-form textarea{display:block;width:100%;padding:13px;margin-top:7px;border:1px solid #d6e0e1;border-radius:10px;font:inherit;outline:none}
+.contact-form textarea{min-height:150px;resize:vertical}
+.success-message{color:var(--teal);font-weight:700}
+
+/* CTA + FOOTER */
+.cta{padding:100px 20px;text-align:center;color:#fff;background:linear-gradient(120deg,#06333b,#087f8c)}
+.cta h2{font-family:"Playfair Display",serif;font-size:3rem;margin:10px 0}
+.cta p{margin-bottom:25px}
+footer{background:var(--dark);color:#fff;padding-top:45px}
+.footer-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.footer-grid h3{font-family:"Playfair Display",serif;font-size:1.7rem;color:var(--yellow)}
+.footer-grid p{color:#bfd1d3}
+.footer-bottom{margin-top:30px;padding:20px;border-top:1px solid rgba(255,255,255,.1);text-align:center;color:#9fb4b7;font-size:.8rem}
+
+/* ANIMATION */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(25px);transition:all .7s ease}
+.reveal.show{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .timeline{width:100%;padding:8px 0 8px 34px;gap:20px}
+  .timeline::before{left:8px;transform:none}
+  .timeline-item,.timeline-item:nth-child(odd),.timeline-item:nth-child(even){width:100%;margin:0}
+  .timeline-item:nth-child(odd)::before,.timeline-item:nth-child(even)::before{left:-34px;right:auto}
+  .timeline-item:nth-child(odd)::after,.timeline-item:nth-child(even)::after{left:-20px;right:auto;width:20px}
+  .menu-btn{display:block}
+  nav{display:none;position:absolute;top:75px;left:0;width:100%;padding:25px;background:var(--cream);flex-direction:column;text-align:center}
+  nav.open{display:flex}
+  .split,.contact-layout{grid-template-columns:1fr}
+  .feature-grid,.guide-grid{grid-template-columns:repeat(2,1fr)}
+  .destination-card{grid-template-columns:1fr}
+  .destination-image{min-height:350px}
+  .tips-grid{grid-template-columns:repeat(2,1fr)}
+  .food-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+  .section{padding:70px 0}
+  .budget-card.featured{transform:none}
+  .budget-card.featured:hover{transform:translateY(-8px)}
+  .hero h1{font-size:3.5rem}
+  .stats-grid{grid-template-columns:1fr;gap:25px}
+  .feature-grid,.guide-grid,.culture-grid,.food-grid,.tips-grid,.budget-grid{grid-template-columns:1fr}
+  .destination-content{padding:25px}
+  .destination-content h3{font-size:2rem}
+  .footer-grid{grid-template-columns:1fr}
+}
+
+/* =========================================================
+   ELEGANT EDITORIAL TRAVEL REFRESH
+   ========================================================= */
+:root{
+  --ink:#123b43;
+  --teal:#087f8c;
+  --teal-deep:#075d66;
+  --coral:#e8894c;
+  --sand:#fff8ed;
+  --paper:#fffdf8;
+  --mist:#eef7f5;
+  --muted:#6b7b7f;
+  --line:rgba(18,59,67,.10);
+  --shadow-soft:0 18px 55px rgba(18,59,67,.10);
+  --shadow-hover:0 28px 70px rgba(18,59,67,.16);
+}
+
+body{
+  background:
+    radial-gradient(circle at 10% 10%,rgba(255,209,138,.14),transparent 28%),
+    radial-gradient(circle at 90% 30%,rgba(8,127,140,.08),transparent 26%),
+    var(--sand);
+  color:var(--ink);
+}
+
+/* refined navigation */
+.navbar{
+  height:78px;
+  padding:0 clamp(22px,5vw,72px);
+  background:rgba(255,253,248,.82);
+  border-bottom:1px solid rgba(18,59,67,.08);
+  box-shadow:0 8px 35px rgba(18,59,67,.07);
+  backdrop-filter:blur(18px) saturate(140%);
+}
+.logo{
+  font-size:1.08rem;
+  letter-spacing:-.02em;
+}
+.logo span{
+  width:39px;height:39px;
+  display:grid;place-items:center;
+  border-radius:12px;
+  background:linear-gradient(145deg,var(--teal),#0b9ba8);
+  box-shadow:0 8px 18px rgba(8,127,140,.22);
+}
+nav{gap:8px;align-items:center}
+nav a{
+  padding:10px 12px;
+  border-radius:999px;
+  color:#52666b;
+  font-size:.82rem;
+}
+nav a:hover{
+  color:var(--teal);
+  background:var(--mist);
+}
+
+/* hero becomes more editorial */
+.hero{
+  min-height:92vh;
+  margin-top:78px;
+  background:
+    linear-gradient(115deg,rgba(4,40,48,.88) 0%,rgba(4,64,70,.58) 48%,rgba(4,64,70,.20) 100%),
+    url("https://s2.dmcdn.net/v/VNWAq1bSCvWYSFnT9/x720") center/cover;
+  overflow:hidden;
+}
+.hero::before{
+  content:"";
+  position:absolute;inset:0;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.04),transparent 28%),
+    radial-gradient(circle at 75% 35%,rgba(255,209,138,.20),transparent 22%);
+  pointer-events:none;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  width:520px;height:520px;
+  right:-190px;bottom:-240px;
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:50%;
+  box-shadow:0 0 0 70px rgba(255,255,255,.025),0 0 0 140px rgba(255,255,255,.02);
+}
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:980px;
+}
+.hero .eyebrow{
+  display:inline-flex;
+  padding:9px 14px;
+  border:1px solid rgba(255,255,255,.24);
+  border-radius:999px;
+  background:rgba(255,255,255,.09);
+  backdrop-filter:blur(8px);
+}
+.hero h1{
+  font-size:clamp(4rem,8.5vw,7.5rem);
+  letter-spacing:-.055em;
+  text-shadow:0 10px 35px rgba(0,0,0,.18);
+}
+.hero h1 span{
+  background:linear-gradient(90deg,#ffd18a,#ffe7b7);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.hero-description{
+  font-size:1.12rem;
+  line-height:1.85;
+  color:rgba(255,255,255,.90);
+}
+.hero-buttons .btn{
+  box-shadow:0 12px 30px rgba(232,137,76,.28);
+}
+.btn{
+  padding:14px 23px;
+  border-radius:999px;
+  background:linear-gradient(135deg,var(--coral),#f2a25e);
+}
+.btn-outline{
+  background:rgba(255,255,255,.09);
+  border-color:rgba(255,255,255,.55);
+  backdrop-filter:blur(10px);
+}
+.btn:hover{
+  transform:translateY(-4px);
+  box-shadow:0 16px 34px rgba(6,51,59,.18);
+}
+.scroll{
+  z-index:2;
+  color:rgba(255,255,255,.78);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  font-size:.68rem;
+}
+
+/* section rhythm */
+.section{padding:115px 0}
+.section-title{margin-bottom:58px}
+.section-title h2{
+  font-size:clamp(2.6rem,5vw,4rem);
+  letter-spacing:-.045em;
+}
+.section-title>p:last-child{
+  color:var(--muted);
+  max-width:650px;
+  margin:0 auto;
+}
+.eyebrow{
+  letter-spacing:.22em;
+  font-size:.68rem;
+}
+
+/* intro */
+.split{gap:90px}
+.intro-image{
+  height:520px;
+  border-radius:34px;
+  position:relative;
+  box-shadow:var(--shadow-hover);
+  border:7px solid rgba(255,255,255,.72);
+}
+.intro-image::after{
+  content:"LA UNION • NORTHERN LUZON";
+  position:absolute;
+  left:24px;bottom:24px;
+  padding:10px 14px;
+  border-radius:999px;
+  color:#fff;
+  font-size:.66rem;
+  font-weight:800;
+  letter-spacing:.14em;
+  background:rgba(6,51,59,.76);
+  backdrop-filter:blur(8px);
+}
+.split h2{
+  font-size:clamp(2.7rem,4.5vw,4rem);
+  letter-spacing:-.045em;
+}
+.split p{color:#66777b}
+
+/* stats */
+.stats{
+  padding:35px 0;
+  background:linear-gradient(135deg,#06333b,#087f8c);
+  position:relative;
+  overflow:hidden;
+}
+.stats::after{
+  content:"";
+  position:absolute;
+  width:320px;height:320px;
+  right:-120px;top:-190px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 0 0 45px rgba(255,255,255,.025),0 0 0 90px rgba(255,255,255,.018);
+}
+.stats-grid{position:relative;z-index:1}
+.stats strong{
+  font-size:2.5rem;
+  color:#ffe0a9;
+}
+
+/* feature cards */
+.light{
+  background:
+    linear-gradient(rgba(238,247,245,.78),rgba(238,247,245,.78)),
+    radial-gradient(circle at 15% 15%,rgba(232,137,76,.10),transparent 25%);
+}
+.feature-grid{gap:24px}
+.feature-card{
+  min-height:260px;
+  padding:34px;
+  border:1px solid var(--line);
+  border-radius:28px;
+  background:rgba(255,255,255,.90);
+  box-shadow:0 12px 35px rgba(18,59,67,.06);
+  overflow:hidden;
+}
+.feature-card::before{
+  content:"";
+  position:absolute;
+  width:115px;height:115px;
+  top:-45px;right:-35px;
+  border-radius:50%;
+  background:rgba(255,209,138,.22);
+}
+.feature-card:hover{
+  transform:translateY(-9px);
+  border-color:rgba(8,127,140,.22);
+  box-shadow:var(--shadow-hover);
+}
+.feature-icon{
+  width:62px;height:62px;
+  display:grid;place-items:center;
+  border-radius:19px;
+  background:linear-gradient(145deg,#eff9f7,#fff4e9);
+  font-size:2rem;
+  box-shadow:inset 0 0 0 1px rgba(18,59,67,.05);
+}
+
+/* destinations */
+.destination-card{
+  grid-template-columns:44% 56%;
+  border-radius:30px;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-soft);
+  transition:transform .35s ease,box-shadow .35s ease;
+}
+.destination-card:hover{
+  transform:translateY(-7px);
+  box-shadow:var(--shadow-hover);
+}
+.destination-image{
+  min-height:455px;
+}
+.destination-image::after{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(6,51,59,.02),rgba(6,51,59,.34));
+}
+.destination-image span{
+  z-index:2;
+  top:22px;left:22px;
+  border-radius:999px;
+  background:rgba(255,253,248,.88);
+  color:var(--teal-deep);
+  backdrop-filter:blur(10px);
+  box-shadow:0 8px 22px rgba(0,0,0,.12);
+}
+.destination-content{padding:48px}
+.destination-content h3{
+  font-size:clamp(2.2rem,3.5vw,3rem);
+  letter-spacing:-.035em;
+}
+.destination-content p,.destination-content li{color:#68797d}
+.tags span{
+  padding:7px 12px;
+  background:#eff8f6;
+  border:1px solid #dceceb;
+}
+.best-time{
+  padding:13px 16px;
+  border-radius:14px;
+  background:#fff6ec;
+  border:1px solid #f6dfca;
+}
+
+/* guide cards */
+.guide-card{
+  min-height:255px;
+  padding:32px;
+  border:1px solid var(--line);
+  border-radius:28px;
+  background:rgba(255,255,255,.92);
+}
+.guide-card:hover{
+  transform:translateY(-9px);
+  box-shadow:var(--shadow-hover);
+  border-color:rgba(8,127,140,.22);
+}
+.guide-card .icon{
+  width:60px;height:60px;
+  display:grid;place-items:center;
+  border-radius:18px;
+  background:linear-gradient(145deg,#eff9f7,#fff4e9);
+}
+.guide-card h3{font-size:1.25rem}
+
+/* culture cards: small visual thumbnails */
+.culture-grid{gap:24px}
+.culture-card{
+  position:relative;
+  min-height:235px;
+  padding:34px;
+  padding-right:150px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:28px;
+  box-shadow:0 12px 35px rgba(18,59,67,.07);
+  transition:.35s ease;
+}
+.culture-card:hover{
+  transform:translateY(-8px);
+  box-shadow:var(--shadow-hover);
+}
+.culture-card::after{
+  content:"";
+  position:absolute;
+  right:24px;top:50%;
+  width:105px;height:105px;
+  transform:translateY(-50%);
+  border-radius:24px;
+  background-position:center;
+  background-size:cover;
+  box-shadow:0 12px 25px rgba(18,59,67,.16);
+  border:5px solid rgba(255,255,255,.85);
+}
+.culture-card:nth-child(1)::after{
+  background-image:url("https://festivepinoy.com/wp-content/uploads/2025/04/Family-Values-Cultural-Traditions.jpeg");
+}
+.culture-card:nth-child(2)::after{
+  background-image:url("https://cdn-0.wanderera.com/wp-content/uploads/2022/08/LA-43-scaled.jpg");
+}
+.culture-card:nth-child(3)::after{
+  background-image:url("https://launion.gov.ph/wp-content/uploads/2023/03/335438526_145373114828281_3408739698265272425_n.jpg");
+}
+.culture-card:nth-child(4)::after{
+  background-image:url("https://www.axn-asia.com/specials/axn-asia/microsite/myhometownisgoat/displays/images/whatsnew78/bw1.jpg");
+}
+.big-icon{
+  width:56px;height:56px;
+  display:grid;place-items:center;
+  border-radius:17px;
+  background:#eff8f6;
+  font-size:1.9rem;
+}
+
+/* food */
+.food-card{
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:30px 22px;
+  transition:.3s ease;
+  cursor:pointer;
+  text-align:center;
+  background:#fff;
+  font:inherit;
+  color:inherit;
+  width:100%;
+  position:relative;
+}
+.food-card:hover{transform:translateY(-7px);box-shadow:var(--shadow-soft)}
+.food-card:focus-visible{
+  outline:3px solid rgba(232,137,76,.45);
+  outline-offset:4px;
+}
+.food-card::after{
+  content:"Click to view";
+  display:block;
+  margin-top:16px;
+  color:var(--teal);
+  font-size:.78rem;
+  font-weight:800;
+}
+.food-icon{
+  width:60px;height:60px;
+  margin:0 auto 14px;
+  display:grid;place-items:center;
+  border-radius:50%;
+  background:#fff5e8;
+}
+
+/* tips */
+.tip-card{
+  border:1px solid var(--line);
+  border-radius:26px;
+  transition:.3s ease;
+}
+.tip-card:hover{transform:translateY(-7px);box-shadow:var(--shadow-soft)}
+.tip-icon{
+  width:58px;height:58px;
+  display:grid;place-items:center;
+  border-radius:18px;
+  background:#eff8f6;
+}
+
+/* responsive polish */
+@media(max-width:900px){
+  .hero{margin-top:78px}
+  .destination-card{grid-template-columns:1fr}
+  .destination-image{min-height:360px}
+  .culture-card{padding-right:34px;padding-bottom:150px}
+  .culture-card::after{
+    right:34px;top:auto;bottom:24px;
+    transform:none;
+    width:92px;height:72px;
+  }
+}
+@media(max-width:600px){
+  .navbar{height:70px}
+  .hero{margin-top:70px;min-height:88vh}
+  .hero h1{font-size:3.6rem}
+  .section{padding:80px 0}
+  .destination-content{padding:30px}
+  .intro-image{height:380px}
+  .culture-card{padding:28px 28px 120px}
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+  <a href="#home" class="logo"><span>LU</span> Explore La Union</a>
+  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  <nav id="navMenu">
+    <a href="#home">Home</a>
+    <a href="#destinations">Destinations</a>
+    <a href="#travel-guide">Travel Guide</a>
+    <a href="#culture">Culture & Cuisine</a>
+    <a href="#tips">Travel Tips</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- HOME -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <p class="eyebrow">PHILIPPINE TOURISM</p>
+    <h1>Discover <span>La Union</span></h1>
+    <p class="hero-description">
+      Discover beautiful beaches, breathtaking waterfalls, cultural landmarks,
+      artistic treasures, and unforgettable experiences in La Union.
+    </p>
+    <div class="hero-buttons">
+      <a href="#destinations" class="btn">Explore Destinations</a>
+      <a href="#travel-guide" class="btn btn-outline">Travel Guide</a>
+    </div>
+  </div>
+  <div class="scroll">↓ Scroll to Explore</div>
+</section>
+
+<section class="section">
+  <div class="container split">
+    <div class="intro-image reveal"></div>
+    <div class="reveal">
+      <p class="eyebrow orange">WELCOME TO LA UNION</p>
+      <h2>Where Adventure Meets the Sea</h2>
+      <p>
+        La Union is one of the exciting destinations in Northern Luzon.
+        It offers beautiful beaches, outdoor adventures, cultural attractions,
+        art, food, and warm Filipino hospitality.
+      </p>
+      <p>
+        Let's Discover the five amazing destinations that
+        showcase the beauty and culture of La Union.
+      </p>
+      <a href="#destinations" class="text-link">Explore the five destinations →</a>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="container stats-grid">
+    <div><strong>05</strong><span>Featured Destinations</span></div>
+    <div><strong>01</strong><span>Amazing Province</span></div>
+    <div><strong>∞</strong><span>Memories to Create</span></div>
+  </div>
+</section>
+
+<section class="section light">
+  <div class="container">
+    <div class="section-title">
+      <p class="eyebrow orange">WHY VISIT LA UNION?</p>
+      <h2>One Destination. Many Experiences.</h2>
+    </div>
+    <div class="feature-grid">
+      <button type="button" class="feature-card reveal" onclick="openGuide('beach')">
+        <div class="feature-icon">🏄</div>
+        <h3>Beach & Surf</h3>
+        <p>Experience the famous coastal atmosphere and surfing culture of San Juan.</p>
+        <span class="feature-click">Click to learn more →</span>
+      </button>
+
+      <button type="button" class="feature-card reveal" onclick="openGuide('nature')">
+        <div class="feature-icon">🌿</div>
+        <h3>Nature Adventure</h3>
+        <p>Explore beautiful landscapes and enjoy an outdoor adventure at Tangadan Falls.</p>
+        <span class="feature-click">Click to learn more →</span>
+      </button>
+
+      <button type="button" class="feature-card reveal" onclick="openGuide('culture')">
+        <div class="feature-icon">🏯</div>
+        <h3>Culture & Heritage</h3>
+        <p>Discover historical and cultural places such as Ma-Cho Temple.</p>
+        <span class="feature-click">Click to learn more →</span>
+      </button>
+
+      <button type="button" class="feature-card reveal" onclick="openGuide('food')">
+        <div class="feature-icon">🍜</div>
+        <h3>Filipino Cuisine</h3>
+        <p>Taste delicious Filipino dishes while supporting local businesses.</p>
+        <span class="feature-click">Click to learn more →</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- DESTINATIONS -->
+<section class="section" id="destinations">
+  <div class="container">
+    <div class="section-title">
+      <p class="eyebrow orange">• LA UNION</p>
+      <h2>Featured Destinations</h2>
+      <p>Five amazing places you should discover in La Union.</p>
+    </div>
+
+    <article class="destination-card reveal">
+      <div class="destination-image sanjuan"><span>01</span></div>
+      <div class="destination-content">
+        <p class="location">📍 San Juan, La Union</p>
+        <h3>San Juan Beach</h3>
+        <p>San Juan Beach is one of La Union's popular coastal destinations. It is known for surfing, beautiful sunsets, relaxing beach views, and a lively tourism atmosphere.</p>
+        <h4>Major Attractions</h4>
+        <ul><li>Surfing waves</li><li>Beach scenery</li><li>Sunset views</li><li>Nearby cafés and restaurants</li></ul>
+        <h4>Recommended Activities</h4>
+        <div class="tags"><span>🏄 Surfing</span><span>🌅 Sunset Viewing</span><span>📸 Photography</span><span>🏖️ Beach Activities</span></div>
+        <p class="best-time"><strong>Best time:</strong> Dry season and suitable weather conditions.</p>
+      </div>
+    </article>
+
+    <article class="destination-card reveal">
+      <div class="destination-image macho"><span>02</span></div>
+      <div class="destination-content">
+        <p class="location">📍 San Fernando City</p>
+        <h3>Ma-Cho Temple</h3>
+        <p>Ma-Cho Temple is a Taoist temple located on a hill overlooking the sea. Its architecture, religious significance, and elevated location make it an interesting cultural destination.</p>
+        <h4>Major Attractions</h4>
+        <ul><li>Taoist architecture</li><li>Sea views</li><li>Cultural heritage</li><li>Peaceful surroundings</li></ul>
+        <h4>Recommended Activities</h4>
+        <div class="tags"><span>🏯 Sightseeing</span><span>🙏 Cultural Visit</span><span>📸 Photography</span></div>
+        <p class="best-time"><strong>Best time:</strong> Daytime, while respecting temple rules.</p>
+      </div>
+    </article>
+
+    <article class="destination-card reveal">
+      <div class="destination-image tangadan"><span>03</span></div>
+      <div class="destination-content">
+        <p class="location">📍 San Gabriel, La Union</p>
+        <h3>Tangadan Falls</h3>
+        <p>Tangadan Falls is a beautiful natural waterfall surrounded by lush landscapes. Reaching the falls involves an outdoor trek, making it ideal for adventure seekers.</p>
+        <h4>Major Attractions</h4>
+        <ul><li>Waterfall</li><li>Natural pools</li><li>Mountain scenery</li><li>Forest trails</li></ul>
+        <h4>Recommended Activities</h4>
+        <div class="tags"><span>🥾 Trekking</span><span>💦 Swimming</span><span>🌿 Nature Trip</span><span>📸 Photography</span></div>
+        <p class="best-time"><strong>Best time:</strong> When weather and trail conditions are safe.</p>
+      </div>
+    </article>
+
+    <article class="destination-card reveal">
+      <div class="destination-image bahay"><span>04</span></div>
+      <div class="destination-content">
+        <p class="location">📍 Luna, La Union</p>
+        <h3>Bahay na Bato</h3>
+        <p>Bahay na Bato is an artistic attraction in Luna featuring stone sculptures, creative artworks, and a beautiful coastal environment.</p>
+        <h4>Major Attractions</h4>
+        <ul><li>Stone sculptures</li><li>Local artwork</li><li>Coastal scenery</li><li>Unique architecture</li></ul>
+        <h4>Recommended Activities</h4>
+        <div class="tags"><span>🎨 Art Appreciation</span><span>📸 Photography</span><span>🚶 Sightseeing</span></div>
+        <p class="best-time"><strong>Best time:</strong> Morning or afternoon.</p>
+      </div>
+    </article>
+
+    <article class="destination-card reveal">
+      <div class="destination-image poro"><span>05</span></div>
+      <div class="destination-content">
+        <p class="location">📍 San Fernando City</p>
+        <h3>Poro Point Lighthouse</h3>
+        <p>Poro Point Lighthouse is a historic coastal landmark in San Fernando. It provides visitors an opportunity to appreciate the area's maritime heritage and coastal landscape.</p>
+        <h4>Major Attractions</h4>
+        <ul><li>Historic lighthouse</li><li>Coastal views</li><li>Maritime heritage</li><li>Photography spots</li></ul>
+        <h4>Recommended Activities</h4>
+        <div class="tags"><span>📸 Photography</span><span>🏛️ History</span><span>🌊 Sightseeing</span></div>
+        <p class="best-time"><strong>Best time:</strong> Daytime and clear weather.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- TRAVEL GUIDE -->
+<section class="section light" id="travel-guide">
+  <div class="container">
+    <div class="section-title">
+      <p class="eyebrow orange">PLAN YOUR TRIP</p>
+      <h2>La Union Travel Guide</h2>
+      <p>Everything you need to know before exploring La Union.</p>
+    </div>
+
+    <div class="guide-grid">
+      <button type="button" class="guide-card reveal" onclick="openGuide('bus')">
+        <div class="icon">🚌</div>
+        <h3>By Bus</h3>
+        <p>Travelers from Manila and nearby provinces can take buses heading toward Northern Luzon.</p>
+        <span class="click-more">Click to learn more →</span>
+      </button>
+
+      <button type="button" class="guide-card reveal" onclick="openGuide('car')">
+        <div class="icon">🚗</div>
+        <h3>By Private Car</h3>
+        <p>Driving provides flexibility and makes it easier to visit multiple destinations during your trip.</p>
+        <span class="click-more">Click to learn more →</span>
+      </button>
+
+      <button type="button" class="guide-card reveal" onclick="openGuide('local')">
+        <div class="icon">🛺</div>
+        <h3>Local Transportation</h3>
+        <p>Depending on the area, travelers can use tricycles, jeepneys, taxis, and other local transportation.</p>
+        <span class="click-more">Click to learn more →</span>
+      </button>
+
+      <button type="button" class="guide-card reveal" onclick="openGuide('route')">
+        <div class="icon">📍</div>
+        <h3>Plan Your Route</h3>
+        <p>Group nearby attractions together to save travel time and transportation costs.</p>
+        <span class="click-more">Click to learn more →</span>
+      </button>
+    </div>
+
+    <div class="section-title" style="margin-top:90px">
+      <p class="eyebrow orange">SAMPLE ITINERARY</p>
+      <h2>2-Day La Union Adventure</h2>
+    </div>
+
+    <div class="timeline">
+      <button class="timeline-item reveal" onclick="openItinerary('sanjuan')">
+        <span>DAY 1</span><h3>San Juan Beach</h3>
+        <p>Start your trip at San Juan Beach. Enjoy the beach atmosphere, surfing, sunset views, and nearby food spots.</p>
+        <span class="itinerary-arrow">View day details →</span>
+      </button>
+
+      <button class="timeline-item reveal" onclick="openItinerary('macho')">
+        <span>DAY 1</span><h3>Ma-Cho Temple</h3>
+        <p>Visit Ma-Cho Temple and appreciate its architecture, cultural significance, and beautiful views.</p>
+        <span class="itinerary-arrow">View day details →</span>
+      </button>
+
+      <button class="timeline-item reveal" onclick="openItinerary('poro')">
+        <span>DAY 1</span><h3>Poro Point Lighthouse</h3>
+        <p>End the day with sightseeing and photography around Poro Point.</p>
+        <span class="itinerary-arrow">View day details →</span>
+      </button>
+
+      <button class="timeline-item reveal" onclick="openItinerary('tangadan')">
+        <span>DAY 2</span><h3>Tangadan Falls</h3>
+        <p>Start early and prepare for an outdoor adventure to Tangadan Falls.</p>
+        <span class="itinerary-arrow">View day details →</span>
+      </button>
+
+      <button class="timeline-item reveal" onclick="openItinerary('bahay')">
+        <span>DAY 2</span><h3>Bahay na Bato</h3>
+        <p>Explore the artworks and sculptures at Bahay na Bato before ending your La Union trip.</p>
+        <span class="itinerary-arrow">View day details →</span>
+      </button>
+    </div>
+
+    <div class="section-title" style="margin-top:90px">
+      <p class="eyebrow orange">ESTIMATED BUDGET</p>
+      <h2>Sample Travel Budget</h2>
+      <p>Actual prices may vary depending on season, transportation, and accommodation.</p>
+    </div>
+
+    <div class="budget-grid">
+
+      <article class="budget-card reveal" role="button" tabindex="0" onclick="openBudget('budget')" onkeydown="budgetKeydown(event,'budget')">
+        <div class="budget-icon">🪙</div>
+        <h3>Budget Traveler</h3>
+        <strong>₱1,500 – ₱2,500</strong>
+        <p>Basic transportation, budget meals, and economical accommodation for a practical La Union getaway.</p>
+        <div class="budget-meta">✓ Essentials &nbsp; • &nbsp; Simple &nbsp; • &nbsp; Practical</div>
+      </article>
+
+      <article class="budget-card featured reveal" role="button" tabindex="0" onclick="openBudget('comfort')" onkeydown="budgetKeydown(event,'comfort')">
+        <span class="budget-badge">Recommended</span>
+        <div class="budget-icon">✨</div>
+        <h3>Comfort Traveler</h3>
+        <strong>₱2,500 – ₱4,500</strong>
+        <p>Comfortable accommodation, local transportation, meals, and selected activities for a balanced trip.</p>
+        <div class="budget-meta">✓ Comfort &nbsp; • &nbsp; Convenience &nbsp; • &nbsp; Experience</div>
+      </article>
+
+      <article class="budget-card reveal" role="button" tabindex="0" onclick="openBudget('flexible')" onkeydown="budgetKeydown(event,'flexible')">
+        <div class="budget-icon">👑</div>
+        <h3>Flexible Traveler</h3>
+        <strong>₱4,500+</strong>
+        <p>More accommodation options, private transportation, and additional activities for a more flexible experience.</p>
+        <div class="budget-meta">✓ Flexibility &nbsp; • &nbsp; Premium &nbsp; • &nbsp; Freedom</div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- CULTURE -->
+<section class="section" id="culture">
+  <div class="container">
+    <div class="section-title">
+      <p class="eyebrow orange">LOCAL STORIES • LOCAL FLAVORS</p>
+      <h2>Culture & Cuisine</h2>
+      <p>Discover traditions, creativity, and flavors that make Philippine travel special.</p>
+    </div>
+
+    <div class="culture-grid">
+      <div class="culture-card reveal"><div class="big-icon">🏯</div><h2>Filipino Traditions</h2><p>La Union reflects Filipino values of hospitality, community, respect, and celebration. Visitors should understand and respect local customs and traditions.</p></div>
+      <div class="culture-card reveal"><div class="big-icon">🎨</div><h2>Local Art</h2><p>Bahay na Bato in Luna demonstrates how art and local creativity can become part of the tourism experience.</p></div>
+      <div class="culture-card reveal"><div class="big-icon">🎉</div><h2>Festivals</h2><p>Local festivals feature music, dancing, food, cultural performances, and community celebrations.</p></div>
+      <div class="culture-card reveal"><div class="big-icon">🧺</div><h2>Local Products</h2><p>Travelers can support local communities by purchasing locally produced food, crafts, souvenirs, and artwork.</p></div>
+    </div>
+
+    <div class="section-title" style="margin-top:90px">
+      <p class="eyebrow orange">TASTE THE PHILIPPINES</p>
+      <h2>Famous Filipino Dishes</h2>
+    </div>
+
+    <div class="food-grid">
+      <button type="button" class="food-card reveal" onclick="openGuide('bagnet')" onkeydown="foodKeydown(event,'bagnet')" aria-label="View Bagnet details">
+        <div class="food-icon">🥩</div><h3>Bagnet</h3><p>A crispy pork dish commonly associated with Ilocano cuisine.</p>
+      </button>
+      <button type="button" class="food-card reveal" onclick="openGuide('pinakbet')" onkeydown="foodKeydown(event,'pinakbet')" aria-label="View Pinakbet details">
+        <div class="food-icon">🥬</div><h3>Pinakbet</h3><p>A Filipino vegetable dish made with different local vegetables.</p>
+      </button>
+      <button type="button" class="food-card reveal" onclick="openGuide('longganisa')" onkeydown="foodKeydown(event,'longganisa')" aria-label="View Longganisa details">
+        <div class="food-icon">🌭</div><h3>Longganisa</h3><p>Filipino-style sausage with different regional flavors.</p>
+      </button>
+      <button type="button" class="food-card reveal" onclick="openGuide('halohalo')" onkeydown="foodKeydown(event,'halohalo')" aria-label="View Halo-Halo details">
+        <div class="food-icon">🍧</div><h3>Halo-Halo</h3><p>A colorful Filipino shaved-ice dessert perfect for warm days.</p>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- TIPS -->
+<section class="section light" id="tips">
+  <div class="container">
+    <div class="section-title">
+      <p class="eyebrow orange">TRAVEL RESPONSIBLY</p>
+      <h2>Travel Tips</h2>
+      <p>Stay safe while protecting La Union's people, culture, and environment.</p>
+    </div>
+
+    <div class="tips-grid">
+      <div class="tip-card reveal"><div class="tip-icon">🛡️</div><h2>Safety First</h2><p>Check weather conditions before visiting outdoor destinations. Follow warning signs and instructions from local authorities.</p></div>
+      <div class="tip-card reveal"><div class="tip-icon">♻️</div><h2>Keep It Clean</h2><p>Do not litter. Bring reusable items when possible and dispose of waste properly.</p></div>
+      <div class="tip-card reveal"><div class="tip-icon">🤝</div><h2>Respect Local Culture</h2><p>Respect local traditions, religious places, communities, and local residents.</p></div>
+      <div class="tip-card reveal"><div class="tip-icon">🌊</div><h2>Protect Nature</h2><p>Avoid damaging plants, rocks, wildlife, waterfalls, beaches, and other natural attractions.</p></div>
+      <div class="tip-card reveal"><div class="tip-icon">💰</div><h2>Support Local Businesses</h2><p>Choose local restaurants, guides, shops, artists, and accommodations whenever possible.</p></div>
+      <div class="tip-card reveal"><div class="tip-icon">🎒</div><h2>Pack Smart</h2><p>Bring drinking water, sunscreen, comfortable shoes, extra clothes, and basic first-aid supplies.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="responsible">
+  <div class="container">
+    <h2>Be a Responsible Tourist</h2>
+    <p>Travel is not only about seeing beautiful places. It is also about protecting them for future generations.</p>
+  </div>
+</section>
+
+<!-- ITINERARY DETAILS MODAL -->
+<div id="itineraryModal" class="itinerary-modal">
+  <div class="itinerary-modal-box">
+    <button class="close-itinerary" onclick="closeItinerary()">×</button>
+    <span id="itineraryDay" class="itinerary-day">DAY 1</span>
+    <h2 id="itineraryTitle">San Juan Beach</h2>
+    <p id="itineraryDescription" class="modal-lead"></p>
+    <div id="itineraryDetails" class="itinerary-details"></div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="container contact-layout">
+    <div class="contact-info reveal">
+      <p class="eyebrow orange">PLAN YOUR ADVENTURE</p>
+      <h2>Have a Question?</h2>
+      <p>Use the inquiry form to ask about destinations, activities, transportation, or travel planning.</p>
+      <div class="contact-details">
+        <p>📧 jupeterjamitolaunion.</p>
+        <p>📍 La Union, Philippines</p>
+        <p>🕘 Monday – Friday</p>
+      </div>
+    </div>
+
+    <form id="inquiryForm" class="contact-form reveal">
+      <label>Full Name
+        <input type="text" name="name" placeholder="Enter your name" required>
+      </label>
+      <label>Email Address
+        <input type="email" name="email" placeholder="Enter your email" required>
+      </label>
+      <label>Choose Destination
+        <select name="destination">
+          <option>San Juan Beach</option>
+          <option>Ma-Cho Temple</option>
+          <option>Tangadan Falls</option>
+          <option>Bahay na Bato</option>
+          <option>Poro Point Lighthouse</option>
+        </select>
+      </label>
+      <label>Message
+        <textarea name="message" placeholder="Write your inquiry..." required></textarea>
+      </label>
+      <button class="btn" type="submit">Send Inquiry</button>
+      <p id="message" class="success-message"></p>
+    </form>
+  </div>
+</section>
+
+<!-- BUDGET DETAILS MODAL -->
+<div id="budgetModal" class="budget-modal" role="dialog" aria-modal="true" aria-labelledby="budgetTitle">
+  <div class="budget-modal-box">
+    <button type="button" class="close-budget" onclick="closeBudget()" aria-label="Close budget details">×</button>
+    <div id="budgetIcon" class="budget-modal-icon">🪙</div>
+    <h2 id="budgetTitle">Budget Traveler</h2>
+    <div id="budgetPrice" class="budget-modal-price">₱1,500 – ₱2,500</div>
+    <p id="budgetDescription"></p>
+    <ul id="budgetList" class="budget-modal-list"></ul>
+  </div>
+</div>
+
+<!-- TRAVEL GUIDE POPUP -->
+<div id="guideModal" class="guide-modal" role="dialog" aria-modal="true" aria-labelledby="guideTitle">
+  <div class="guide-modal-box">
+    <button type="button" class="close-guide" onclick="closeGuide()" aria-label="Close travel guide">×</button>
+    <img id="guideImage" class="guide-modal-image" src="https://flyingketchup.ph/wp-content/uploads/2020/11/photo_2020-11-23_21-16-57.jpg" alt="La Union destination">
+    <div id="guideIcon" class="guide-modal-icon">🚌</div>
+    <h2 id="guideTitle">Travel Guide</h2>
+    <p id="guideDescription"></p>
+    <ul id="guideList"></ul>
+  </div>
+</div>
+
+<section class="cta">
+  <div class="container">
+    <p class="eyebrow">YOUR NEXT ADVENTURE</p>
+    <h2>Ready to Explore La Union?</h2>
+    <p>Pack your bags and discover the beauty of Northern Luzon.</p>
+    <a href="#destinations" class="btn">Start Exploring</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-grid">
+    <div><h3>Explore La Union</h3><p>Group 1 • Philippine Tourism Website Project</p></div>
+    <div><p>Discover the beauty. Respect the culture. Protect the environment.</p></div>
+  </div>
+  <div class="footer-bottom">© 2026 | Philippine Tourism Website Project</div>
+</footer>
+
+<script>
+function toggleMenu(){
+  document.getElementById("navMenu").classList.toggle("open");
+}
+
+document.querySelectorAll("nav a").forEach(link=>{
+  link.addEventListener("click",()=>{
+    document.getElementById("navMenu").classList.remove("open");
+  });
+});
+
+/* BUDGET POPUP */
+const budgetData = {
+  budget: {
+    icon: "🪙",
+    title: "Budget Traveler",
+    price: "₱1,500 – ₱2,500",
+    description: "A practical option for travelers who want to explore La Union while keeping daily spending manageable.",
+    list: [
+      "Budget-friendly transportation and local commuting.",
+      "Simple meals and affordable food choices.",
+      "Economical accommodation options.",
+      "Best for short trips and travelers focused on essentials."
+    ]
+  },
+  comfort: {
+    icon: "✨",
+    title: "Comfort Traveler",
+    price: "₱2,500 – ₱4,500",
+    description: "A balanced travel style with more comfort, convenience, and room for selected activities.",
+    list: [
+      "More comfortable accommodation choices.",
+      "Local transportation with greater flexibility.",
+      "Regular meals plus selected cafés or restaurants.",
+      "Suitable for travelers who want a relaxed experience."
+    ]
+  },
+  flexible: {
+    icon: "👑",
+    title: "Flexible Traveler",
+    price: "₱4,500+",
+    description: "A more flexible option with additional room for upgraded accommodation, private transportation, and activities.",
+    list: [
+      "More accommodation and room-type choices.",
+      "Private or more convenient transportation options.",
+      "Additional activities and dining choices.",
+      "Best for travelers who want more freedom in planning."
+    ]
+  }
+};
+
+function openBudget(type){
+  const data = budgetData[type];
+  if(!data) return;
+  document.getElementById("budgetIcon").textContent = data.icon;
+  document.getElementById("budgetTitle").textContent = data.title;
+  document.getElementById("budgetPrice").textContent = data.price;
+  document.getElementById("budgetDescription").textContent = data.description;
+
+  const list = document.getElementById("budgetList");
+  list.innerHTML = "";
+  data.list.forEach(item=>{
+    const li=document.createElement("li");
+    li.textContent="✓ " + item;
+    list.appendChild(li);
+  });
+
+  document.getElementById("budgetModal").classList.add("show");
+  document.body.style.overflow="hidden";
+}
+
+function closeBudget(){
+  document.getElementById("budgetModal").classList.remove("show");
+  document.body.style.overflow="";
+}
+
+document.getElementById("budgetModal").addEventListener("click",function(e){
+  if(e.target===this) closeBudget();
+});
+
+function budgetKeydown(event,type){
+  if(event.key === "Enter" || event.key === " "){
+    event.preventDefault();
+    openBudget(type);
+  }
+}
+
+/* TRAVEL GUIDE POPUP */
+const guideData = {
+  beach: {
+    icon: "🏄",
+    image: "https://flyingketchup.ph/wp-content/uploads/2020/11/photo_2020-11-23_21-16-57.jpg",
+    title: "Beach & Surf",
+    description: "La Union is well known for its coastal atmosphere and surfing culture, especially around San Juan. Visitors can enjoy the beach, watch the sunset, and experience the lively atmosphere around the area.",
+    list: [
+      "Try surfing with a local instructor.",
+      "Enjoy sunset views along the coast.",
+      "Take photos while respecting other beachgoers.",
+      "Keep the beach clean and dispose of waste properly."
+    ]
+  },
+  nature: {
+    icon: "🌿",
+    image: "https://thequeensescape.com/wp-content/uploads/2023/03/Tangadan-Falls-La-Union-5.jpg",
+    title: "Nature Adventure",
+    description: "La Union offers outdoor experiences surrounded by natural landscapes. Tangadan Falls is one of the destinations where visitors can enjoy trekking, scenery, and a refreshing nature trip.",
+    list: [
+      "Prepare comfortable shoes for outdoor trails.",
+      "Bring drinking water and basic travel essentials.",
+      "Check weather and trail conditions before leaving.",
+      "Avoid damaging plants, rocks, and other natural features."
+    ]
+  },
+  culture: {
+    icon: "🏯",
+    image: "https://www.touristsecrets.com/wp-content/uploads/portal_files/styles/1280x840/public/touristsecrets_site_posts/inline-images/2021-02/21b2e8d5ee3dee44c3fd89f7bcec2032.jpeg",
+    title: "Culture & Heritage",
+    description: "La Union offers cultural experiences through historical places, religious sites, local art, and community traditions. Ma-Cho Temple is one example of a cultural destination to visit respectfully.",
+    list: [
+      "Respect religious and cultural places.",
+      "Follow local rules and visitor guidelines.",
+      "Learn about the history and traditions of the destination.",
+      "Ask permission before taking photos when appropriate."
+    ]
+  },
+  food: {
+    icon: "🍜",
+    image: "https://launionbus.ph/assets/filipino-food-BROsEhMK.jpg",
+    title: "Filipino Cuisine",
+    description: "Exploring La Union is also an opportunity to enjoy Filipino food and support local restaurants and small businesses. Regional dishes can add another memorable part to your trip.",
+    list: [
+      "Try local and regional Filipino dishes.",
+      "Support locally owned restaurants and food businesses.",
+      "Ask about ingredients when needed.",
+      "Keep dining areas clean and respect local establishments."
+    ]
+  },
+  bagnet: {
+    icon: "🥩",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Ilocos%20Norte%20Currimao%20Sitio%20Remedios%20-%20Bagnet.jpg",
+    title: "Bagnet",
+    description: "Bagnet is a crispy deep-fried pork belly dish associated with Ilocano cuisine and is a popular specialty in Northern Luzon.",
+    list: [
+      "Best enjoyed freshly cooked and crispy.",
+      "Often served with a dipping sauce or vegetables.",
+      "Try it while exploring Ilocano food traditions."
+    ]
+  },
+  pinakbet: {
+    icon: "🥬",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Pinakbet.jpg",
+    title: "Pinakbet",
+    description: "Pinakbet is a Filipino vegetable dish made with a variety of local vegetables and is strongly associated with Ilocano cuisine.",
+    list: [
+      "Enjoy it as a vegetable-rich Filipino meal.",
+      "It commonly includes vegetables such as squash, eggplant, and bitter melon.",
+      "Taste local versions when visiting Northern Luzon."
+    ]
+  },
+  longganisa: {
+    icon: "🌭",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Vigan%20longganisa.JPG",
+    title: "Longganisa",
+    description: "Longganisa is a Filipino-style sausage with many regional varieties. Vigan longganisa is one well-known variety from Northern Luzon.",
+    list: [
+      "Try Vigan-style longganisa when visiting the region.",
+      "Often served as part of a Filipino breakfast.",
+      "Enjoy it with rice and traditional breakfast sides."
+    ]
+  },
+  halohalo: {
+    icon: "🍧",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Halo-Halo.jpg",
+    title: "Halo-Halo",
+    description: "Halo-halo is a colorful Filipino dessert made with shaved ice, sweet ingredients, milk, and other toppings.",
+    list: [
+      "Mix the layers together before eating.",
+      "Enjoy it as a refreshing dessert on warm days.",
+      "Try different toppings and regional versions."
+    ]
+  },
+  bus: {
+    icon: "🚌",
+    image: "https://partasonlinebooking.ph/wp-content/uploads/2025/04/Partas-bus-Manila-to-La-Union-1.jpg",
+    title: "Traveling by Bus",
+    description: "Travelers from Manila and nearby provinces can take buses heading toward Northern Luzon. Bus travel can be a practical option for visitors who want a convenient way to reach La Union.",
+    list: [
+      "Check the latest bus schedules before traveling.",
+      "Arrive early at the departure point.",
+      "Keep your important belongings with you.",
+      "Plan your destination and stop before boarding."
+    ]
+  },
+  car: {
+    icon: "🚗",
+   image: "https://www.philmotors.com/image/2018-Suzuki-Ciaz-GL-1.4-private-9883430_1.jpg",
+    title: "Traveling by Private Car",
+    description: "Traveling by private car gives you greater flexibility and makes it easier to visit several destinations during your trip.",
+    list: [
+      "Plan your route before starting the trip.",
+      "Check your vehicle before traveling.",
+      "Bring enough drinking water and travel essentials.",
+      "Allow extra travel time between destinations."
+    ]
+  },
+  local: {
+    icon: "🛺",
+       image: "https://launiontransportationllc.com/wp-content/uploads/2026/02/bulk-cars.jpg",
+    title: "Local Transportation",
+    description: "Depending on the destination, travelers can use local transportation such as tricycles, jeepneys, taxis, and other available services.",
+    list: [
+      "Ask about the fare before starting your trip.",
+      "Choose transportation appropriate for your destination.",
+      "Keep your belongings secure.",
+      "Be respectful to local drivers and passengers."
+    ]
+  },
+  route: {
+    icon: "📍",
+        image: "https://fierytrippers.com/wp-content/uploads/2023/04/Planning-Your-Route.webp",
+    title: "Plan Your Route",
+    description: "Planning your route helps you save time and transportation costs while making it easier to visit several attractions.",
+    list: [
+      "Group destinations that are near each other.",
+      "Check travel time between attractions.",
+      "Prepare your itinerary before leaving.",
+      "Leave enough time for unexpected delays."
+    ]
+  }
+};
+
+function openGuide(type){
+  const guide = guideData[type];
+  if(!guide) return;
+
+  const guideImage = document.getElementById("guideImage");
+  guideImage.src = guide.image;
+  guideImage.alt = guide.title + " in La Union";
+  document.getElementById("guideIcon").textContent = guide.icon;
+  document.getElementById("guideTitle").textContent = guide.title;
+  document.getElementById("guideDescription").textContent = guide.description;
+
+  const list = document.getElementById("guideList");
+  list.innerHTML = "";
+
+  guide.list.forEach(item=>{
+    const li = document.createElement("li");
+    li.textContent = item;
+    list.appendChild(li);
+  });
+
+  document.getElementById("guideModal").classList.add("show");
+  document.body.style.overflow = "hidden";
+}
+
+function foodKeydown(event,type){
+  if(event.key === "Enter" || event.key === " "){
+    event.preventDefault();
+    openGuide(type);
+  }
+}
+
+function closeGuide(){
+  document.getElementById("guideModal").classList.remove("show");
+  document.body.style.overflow = "";
+}
+
+document.getElementById("guideModal").addEventListener("click",function(e){
+  if(e.target === this){
+    closeGuide();
+  }
+});
+
+const itineraryData = {
+  sanjuan: {
+    day: "DAY 1",
+    title: "San Juan Beach",
+    description: "Begin the adventure with the coastal atmosphere of San Juan. Take time to enjoy the beach, surf culture, sunset views, and nearby dining spots.",
+    details: [
+      ["Morning", "Arrive in San Juan and settle into the area."],
+      ["Activity", "Enjoy beach activities and, when conditions are suitable, try surfing."],
+      ["Food", "Explore nearby cafés and restaurants."],
+      ["Evening", "Relax and enjoy the sunset before ending the day."]
+    ]
+  },
+  macho: {
+    day: "DAY 1",
+    title: "Ma-Cho Temple",
+    description: "Continue the first day with a cultural visit to Ma-Cho Temple and take time to appreciate its architecture and elevated views.",
+    details: [
+      ["Visit", "Explore the temple respectfully and observe local rules."],
+      ["Experience", "Appreciate the architecture, cultural significance, and surroundings."],
+      ["Photo", "Take photographs only where permitted."],
+      ["Tip", "Wear comfortable clothing for walking and sightseeing."]
+    ]
+  },
+  poro: {
+    day: "DAY 1",
+    title: "Poro Point Lighthouse",
+    description: "End Day 1 with a relaxed sightseeing stop at Poro Point and enjoy the coastal scenery and photography opportunities.",
+    details: [
+      ["Activity", "Explore the surrounding area and enjoy the coastal views."],
+      ["Photo", "Capture the landscape and landmark views."],
+      ["Timing", "Late afternoon can be a pleasant time for sightseeing."],
+      ["Reminder", "Follow access rules and respect surrounding properties."]
+    ]
+  },
+  tangadan: {
+    day: "DAY 2",
+    title: "Tangadan Falls",
+    description: "Start Day 2 early for an outdoor adventure to Tangadan Falls. Prepare properly for trekking and changing weather conditions.",
+    details: [
+      ["Morning", "Start early and prepare for the trail."],
+      ["Activity", "Enjoy the waterfall, natural pools, and surrounding scenery when conditions are safe."],
+      ["Bring", "Water, comfortable footwear, sun protection, and extra clothes."],
+      ["Safety", "Check current weather and trail conditions before going."]
+    ]
+  },
+  bahay: {
+    day: "DAY 2",
+    title: "Bahay na Bato",
+    description: "Finish the trip with art and coastal scenery at Bahay na Bato in Luna, where visitors can explore sculptures and creative works.",
+    details: [
+      ["Activity", "Walk around the attraction and appreciate the artwork."],
+      ["Photo", "Capture the unique stone sculptures and coastal setting."],
+      ["Respect", "Do not touch or damage artworks and structures."],
+      ["Ending", "Take time to relax and enjoy the final part of your La Union trip."]
+    ]
+  }
+};
+
+function openItinerary(type){
+  const data=itineraryData[type];
+  if(!data) return;
+
+  document.getElementById("itineraryDay").textContent=data.day;
+  document.getElementById("itineraryTitle").textContent=data.title;
+  document.getElementById("itineraryDescription").textContent=data.description;
+
+  const container=document.getElementById("itineraryDetails");
+  container.innerHTML="";
+
+  data.details.forEach(([label,text])=>{
+    const item=document.createElement("div");
+    item.className="itinerary-detail";
+    item.innerHTML=`<strong>${label}</strong><span>${text}</span>`;
+    container.appendChild(item);
+  });
+
+  document.getElementById("itineraryModal").classList.add("show");
+  document.body.style.overflow="hidden";
+}
+
+function closeItinerary(){
+  document.getElementById("itineraryModal").classList.remove("show");
+  document.body.style.overflow="";
+}
+
+document.getElementById("itineraryModal").addEventListener("click",function(e){
+  if(e.target===this) closeItinerary();
+});
+
+const form=document.getElementById("inquiryForm");
+if(form){
+  form.addEventListener("submit",function(e){
+    e.preventDefault();
+    document.getElementById("message").textContent=
+      "✓ Thank you! Your inquiry has been received. This is a demo tourism website form.";
+    form.reset();
+  });
+}
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:.1});
+
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+
+document.addEventListener("keydown",e=>{
+  if(e.key === "Escape"){
+    closeGuide();
+    closeItinerary();
+    closeBudget();
+  }
+});
+</script>
+
+</body>
+</html>
